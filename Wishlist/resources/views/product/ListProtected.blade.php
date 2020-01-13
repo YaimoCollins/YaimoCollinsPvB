@@ -1,7 +1,6 @@
 @extends('product.layout')
 
 @section('content')
-    <a href="{{ route('products.create') }}" class="btn btn-success mb-2">Add</a>
     <br>
     @if (Route::has('login'))
         <div class="top-right links">
@@ -26,7 +25,6 @@
                     <th>Product Code</th>
                     <th>Description</th>
                     <th>Created at</th>
-                    <td colspan="2">Action</td>
                 </tr>
                 </thead>
                 <tbody>
@@ -36,14 +34,6 @@
                         <td>{{ $product->product_code }}</td>
                         <td>{{ $product->description }}</td>
                         <td>{{ date('Y-m-d', strtotime($product->created_at)) }}</td>
-                        <td><a href="{{ route('products.edit',$product->id)}}" class="btn btn-primary">Edit</a></td>
-                        <td>
-                            <form action="{{ route('products.destroy', $product->id)}}" method="post">
-                                {{ csrf_field() }}
-                                @method('DELETE')
-                                <button class="btn btn-danger" type="submit">Delete</button>
-                            </form>
-                        </td>
                     </tr>
                 @endforeach
                 </tbody>

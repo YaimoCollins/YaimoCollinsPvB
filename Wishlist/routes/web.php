@@ -11,11 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::resource('products', 'ProductController');
+
+Route::resource('products_protected', 'ProductProtectedController');
 
 Auth::routes();
 
